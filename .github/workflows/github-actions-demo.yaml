@@ -9,6 +9,10 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: lauch python
-        run: python3 job.py
+        run: 
+        cp job.py $GITHUB_WORKSPACE  # Copie le fichier job.py dans le répertoire de travail
+        cd $GITHUB_WORKSPACE
+        python job.py
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - name: Check out repository code
         uses: actions/checkout@v2
